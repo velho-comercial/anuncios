@@ -1,0 +1,109 @@
+
+
+<div>
+
+{{#if usuario}}
+
+<div  id="divCadastro" >
+  <i class="fa fa-user" aria-hidden="true"></i>
+</div>
+
+<div style="visibility:hidden; border:1px solid black;" id="containerCadastro">
+<div>
+    <a href="/alterar">  Meu Cadastro  </a>
+  </div>
+  <div>
+    <a href="/meus-anuncios">  Meus Anúncios  </a>
+  </div>
+</div>
+
+<div>  Olá, {{ usuario }}.  <a href="/sair">sair</a> </div>
+
+
+
+
+  {{else}}
+      <a href="/entrar">entrar</a>
+{{/if}}
+</div>
+
+<div>
+    <a href="/adicionar-anuncio">anunciar</a>
+</div>
+
+
+<form method="get" action="/buscar">
+<div>
+<div class="input-group">
+<input name="palavrasChave" placeholder="Memória RAM, HD, Notebook, Fiat Uno" class="form-control"> 
+  <button type="submit" class="btn btn-primary" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+  </div>
+</div>
+</form>
+
+<h1>O que você precisa?</h1>
+
+<div class="row">
+  <div class="col-md-3">
+      <img  class="img-fluid" src="/images/eletronicos.jpg">
+
+  </div>
+    <div class="col-md-3">
+      <img  class="img-fluid" src="/images/imoveis.jpg">
+    </div>
+      <div class="col-md-3">
+  <img  class="img-fluid" src="/images/automoveis.jpg">
+
+      </div>
+        <div class="col-md-3">
+            <img  class="img-fluid" src="/images/pets.png">
+        </div>
+          <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+              <div class="col-md-3"></div>
+                <div class="col-md-3"></div>
+
+</div>
+
+
+<h1>Produtos Sugeridos</h1>
+
+{{#each produtos}}
+
+  {{titulo}}
+
+{{/each}}
+
+
+<div>
+  <div>classificados</div>
+  <div>
+    Disponibilizamos um portal para que usuários possam anunciar seus produtos de forma prática e rápida. Toda a negociação é deve ser tratada entres as partes, comprador e vendedor, não acarretando nenhuma responsabilidade a este portal.
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+$('#divCadastro').hover(function(){
+
+        $('#containerCadastro').css('visibility', 'visible')
+           
+},
+function(){
+        
+        setTimeout( () => {
+              $('#containerCadastro').css('visibility', 'hidden')
+        } , 3000)
+
+     
+
+
+}
+);
+
+
+
+})
+
+
+</script>

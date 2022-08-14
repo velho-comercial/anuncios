@@ -1,0 +1,244 @@
+<h1>Basta preencher os dados desta tela para inserir o anúncio</h1>
+
+<h3>Categoria</h3>
+
+
+
+<form  enctype="multipart/form-data"  method="post" action="/anunciar" >
+
+
+<input id="inputNumfiles"  name="inputNumfiles" type="hidden">
+
+
+<select id="selectCategorias">
+
+   {{#each categorias}}
+   <option value="{{id}}">{{nome}}</option>
+   {{/each}}
+
+</select>
+
+
+<p>Subcategoria*</p>
+<select name="subcategoria" id="selectSubcategorias">
+
+ 
+
+</select>
+
+
+<div>
+<div>
+  <label>título*</label>
+  <input name="titulo" class="form-control"  placeholder="Título do anúncio"   >
+</div>
+
+<div>
+    <label>descrição*</label>
+  <textarea name="descricao" class="form-control" placeholder="descrição do produto"></textarea>
+</div>
+<div>
+
+<div>
+  <label>fotos* Adicione até 8 imagens, um bom anúncio requer pelo menos 3.</label>
+</div>
+
+<div class="row">
+<div onClick="escolherImagem(1)" class="col-md-2">
+<div style="cursor:pointer"  id="containerImagem1" >
+
+   <div style="border:3px dashed blue">
+     <div> <i class="fa-solid fa-camera"></i></div>
+      Adicionar Imagem
+      <img class="img-fluid" id="img1"  >
+   </div>
+  </div>
+</div>
+
+<div onClick="escolherImagem(2)" style="visibility: hidden;" class="col-md-2">
+<div style="cursor:pointer"  id="containerImagem2" >
+
+   <div style="border:3px dashed blue">
+     <div> <i class="fa-solid fa-camera"></i></div>
+      Adicionar Imagem
+      <img class="img-fluid" id="img2"  >
+   </div>
+  </div>
+</div>
+
+<div onClick="escolherImagem(3)" style="visibility: hidden;" class="col-md-2">
+<div style="cursor:pointer"  id="containerImagem3" >
+
+   <div style="border:3px dashed blue">
+     <div> <i class="fa-solid fa-camera"></i></div>
+      Adicionar Imagem
+      <img class="img-fluid" id="img3"  >
+   </div>
+  </div>
+</div>
+
+<div onClick="escolherImagem(4)" style="visibility: hidden;" class="col-md-2">
+<div style="cursor:pointer"  id="containerImagem4" >
+
+   <div style="border:3px dashed blue">
+     <div> <i class="fa-solid fa-camera"></i></div>
+      Adicionar Imagem
+      <img class="img-fluid" id="img4"  >
+   </div>
+  </div>
+</div>
+
+
+<div onClick="escolherImagem(5)" style="visibility: hidden;" class="col-md-2">
+<div style="cursor:pointer"  id="containerImagem5" >
+
+   <div style="border:3px dashed blue">
+     <div> <i class="fa-solid fa-camera"></i></div>
+      Adicionar Imagem
+      <img class="img-fluid" id="img5"  >
+   </div>
+  </div>
+</div>
+
+
+<div onClick="escolherImagem(6)" style="visibility: hidden;" class="col-md-2">
+<div style="cursor:pointer"  id="containerImagem6" >
+
+   <div style="border:3px dashed blue">
+     <div> <i class="fa-solid fa-camera"></i></div>
+      Adicionar Imagem
+      <img class="img-fluid" id="img6"  >
+   </div>
+  </div>
+</div>
+
+
+</div>
+   <input style="visibility:hidden" id="inputFile1" name="foto1"  type="file">
+   <input style="visibility:hidden" id="inputFile2" name="foto2"  type="file">
+      <input style="visibility:hidden" id="inputFile3" name="foto3"  type="file">
+   <input style="visibility:hidden" id="inputFile4" name="foto4"  type="file">
+   <input style="visibility:hidden" id="inputFile5" name="foto5"  type="file">
+   <input style="visibility:hidden" id="inputFile6" name="foto6"  type="file">
+
+
+
+
+<div>
+  <label>vídeo</label>
+</div>
+<div>
+  <input  name="url_video" class="form-control" placeholder="https://meuvideoyoutube.com/989fef098" >
+</div>
+  
+  
+  <div>
+    <label>Preço:</label>
+     <input name="preco"  class="form-control" >
+  </div>
+
+  <button class="btn btn-success"> 
+     adicionar
+  </button>
+</div>
+</div>
+
+
+<script>
+
+
+
+function escolherImagem(i){
+
+            $('#inputNumfiles').val(i);
+        
+
+           $("#inputFile" + i).trigger('click');
+  $("#inputFile" + i).change(function(){
+           
+           var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#img' + i).attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(this.files[0]);
+
+          $('#containerImagem' + (i + 1)).css('visibility', 'visible')
+
+
+            
+
+
+  });
+
+
+}
+
+
+
+$(document).ready(function(){
+
+    let numfileUpload = 1;
+
+{{!--   $('#containerImagem1').on('click', function(e){
+         
+      
+
+    $("#inputFile1").trigger('click');
+  $("#inputFile1").change(function(){
+           
+           var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#img1').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(this.files[0]);
+
+          $('#containerImagem2').css('visibility', 'visible')
+
+  });
+  
+    }) --}}
+ 
+
+
+  $('#selectCategorias').on('change',function(){
+         
+        let idCategoria =  $('#selectCategorias').val();
+             
+    
+           
+        $.ajax({
+          url: '/subcategorias?idCategoria=' + idCategoria ,
+          success: function(e){
+
+             var subcategorias = e.map(function(elemento) {
+                   return {value: elemento.id, text: elemento.nome}
+              });
+
+              console.log(subcategorias);
+
+                $('#selectSubcategorias').empty();
+
+              e.forEach((subcategoria) =>{
+                    $('#selectSubcategorias').append($('<option>', {value: subcategoria.id, text: subcategoria.nome }));      
+              })
+
+             
+
+          }
+        })
+          
+         
+
+      
+         
+  });
+
+})
+
+</script>
+
+</form>

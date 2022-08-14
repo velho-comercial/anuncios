@@ -1,0 +1,33 @@
+
+<h1>{{produto.titulo}}</h1>
+<div class="row">
+
+  <div class="col-md-3">
+
+       {{#each produto.fotos}}
+       <img class="img-fluid" src="/fotos/{{../produto.diretorioMedia}}/{{this}}">
+       {{/each}}
+
+
+   
+
+  </div>
+   <div class="col-md-6">
+
+      <div>
+        <label>telefone</label>
+      </div>
+          {{anunciante.telefone}}
+             <div>
+        <label>nome</label>
+      </div>
+          {{anunciante.nome}}
+
+          {{anunciante.usuario}}
+          {{anunciante.estado}}
+
+          <a href="#">mais anúncios deste vendedor</a>
+
+  </div>
+
+</div>

@@ -1,0 +1,52 @@
+
+<h1> {{ sexo.fetiche}} </h1>
+
+<div>vídeo curto </div>
+
+
+<div>
+        <div>trailer</div>
+        <video width="200" height="200" src="/sexos/sexo{{sexo.path}}/videocurto.mp4"></video>
+
+
+         <video width="320" height="240" controls>
+  <source src="/sexos/sexo1/videocurto.mp4" type="video/mp4">
+
+Your browser does not support the video tag.
+</video> 
+</div>
+
+
+
+
+<div>vídeo completo - {{sexo.cache}} - duração: 12:25 min</div>
+
+  {{#if acesso}}
+  {{#if acesso.creditado}}
+ <h3>Você tem acesso completo ao vídeo</h3>
+    <video width="320" height="240" controls>
+  <source src="/sexos/sexo{{sexo.path}}/videocompleto.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video> 
+  {{else}}
+   <h3>Aguardo confirmação de crédito do pagamento</h3>
+   
+   {{/if}}
+ 
+  
+
+
+    
+    {{else}}
+     <h3>Você não tem acesso a este vídeo</h3>
+     <h2>Quando você adquirir este vídeo ele aparece completo neste local.</h2>
+
+  {{/if}}
+
+
+<div>
+
+
+
+</div>
+

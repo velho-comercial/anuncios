@@ -1,0 +1,58 @@
+
+
+<div class="row">
+
+<div class="col-md-2">
+
+  <div>
+    <div><label>preço:</label></div>
+  <form class="form-inline">
+     <input  class="form-control" placeholder="min">
+     <input class="form-control" placeholder="max"> <button class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i>  </button>
+     </form>
+  </div>
+
+</div>
+
+
+<div class="col-md-8">
+
+{{#each produtos}}
+
+
+
+<a href="/produto/{{id}}/{{slug}}">
+<div class="row">
+<div  class="col-md-4">
+
+        <div class="col-md-4">
+          <div style="position:relative">
+  <img class="img-fluid" src="/fotos/{{diretorioMedia}}/{{fotos.[0]}}">
+    <div style="absolute:fixed; bottom:0px; left:0px;" >{{fotos.length}}</div>
+
+  </div>
+
+</div>
+ 
+ 
+</div>
+<div class="col-md-4">
+ <div>{{titulo}}</div>
+  <div>{{cidade}}</div>
+</div>
+<div class="col-md-4">
+ {{preco}}
+</div>
+
+</div>
+
+
+
+
+  
+
+</a>
+
+{{/each}}
+</div>
+</div>

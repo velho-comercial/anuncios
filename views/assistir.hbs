@@ -1,0 +1,28 @@
+<h1> Assistir cena </h1>
+<h1> Cobramos um valor simbólico para manter o site. </h1>
+<div> Para assistir, adquira o video com o qr code abaixo e mande uma mensagem infomando seu usuário, será liberado em até 8 horas. </div>
+<div> Faça um pix para a chave e mande </div>
+
+<div>
+<span style="width:40%">
+<img  src="/images/qr_code.png">
+</span>
+<span style="width:40%">
+      
+  
+    
+     <label>qual cena você deseja adquirir</label>
+    
+    <form  action="/comprar" method="post" >
+<select name="sexo" >
+      {{#each sexos}}
+    <option  hidden="hidden" value="{{id}}" selected="selected">{{fetiche}}</option>
+      {{/each}}
+</select>
+     
+   
+
+     <button  type="submit" >comprar</button>
+</form>
+</span>
+</div>

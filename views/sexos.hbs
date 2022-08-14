@@ -1,0 +1,20 @@
+<h1>Sexo explícito</h1>
+
+
+{{#each sexos}}
+     <div>
+        <div>{{fetiche }}</div>
+        <div>{{acao}}</div>    
+                <div> {{ cache  }} </div>
+                <a href="sexos/{{id}}/{{fetiche}}" >ver</a>
+        </div>  
+
+        {{else}}
+        <h1>não encontramos nada... </h1>
+       
+    
+{{/each}} 
+
+{{#unless false}}
+<h1>false</h1>
+{{/unless}}
